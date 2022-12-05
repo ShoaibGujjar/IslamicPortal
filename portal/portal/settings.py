@@ -14,7 +14,7 @@ from pathlib import Path
 
 import os
 
-import cloudinary
+# import cloudinary
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     "rest_framework",
     "djoser" ,
     'corsheaders',
-    'cloudinary_storage',
-    'cloudinary',
+    # 'cloudinary_storage',
+    # 'cloudinary',
 
     # created app
     'courses',
@@ -188,15 +188,15 @@ WEBHOOK_SECRET=os.environ.get('WEBHOOK_SECRET')
 # APPEND_SLASH=False
 
 # cloudinary settings
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
-    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
-    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
-}
+# CLOUDINARY_STORAGE = {
+#     'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+#     'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+#     'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET')
+# }
 
-cloudinary.config( 
-  cloud_name =os.environ.get('CLOUDINARY_CLOUD_NAME'), 
-  api_key = os.environ.get('CLOUDINARY_API_KEY'), 
-  api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
-  secure = False
-)
+# cloudinary.config( 
+#   cloud_name =os.environ.get('CLOUDINARY_CLOUD_NAME'), 
+#   api_key = os.environ.get('CLOUDINARY_API_KEY'), 
+#   api_secret = os.environ.get('CLOUDINARY_API_SECRET'),
+#   secure = False
+# )

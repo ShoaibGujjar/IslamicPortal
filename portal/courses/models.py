@@ -8,10 +8,10 @@ from mutagen.mp4 import MP4,MP4StreamInfoError
 from .helpers import get_timer
 from decimal import Decimal
 
-from cloudinary_storage.storage import MediaCloudinaryStorage
-from cloudinary_storage.validators import validate_video
+# from cloudinary_storage.storage import MediaCloudinaryStorage
+# from cloudinary_storage.validators import validate_video
 
-from cloudinary.models import CloudinaryField
+# from cloudinary.models import CloudinaryField
 
 
 
@@ -30,7 +30,7 @@ class Course(models.Model):
     course_sections=models.ManyToManyField('CourseSection',blank=True)
     comment=models.ManyToManyField('Comment',blank=True)
     course_uuid=models.UUIDField(default=uuid.uuid4,unique=True)
-    image_url=models.ImageField(upload_to='course_images',storage=MediaCloudinaryStorage())
+    image_url=models.ImageField(upload_to='course_images')   #storage=MediaCloudinaryStorage()
     price=models.DecimalField(max_digits=5 ,decimal_places=2)
 
     def get_rating(self):
@@ -93,8 +93,8 @@ class CourseSection(models.Model):
 
 class Episode(models.Model):
     title=models.CharField(max_length=225)
-    file=CloudinaryField(resource_type='video',validators=[validate_video],folder='media')
-    # file=models.FileField(upload_to='courses',validators=[validate_video],)
+    #file=CloudinaryField(resource_type='video',validators=[validate_video],folder='media')
+    file=models.FileField(upload_to='courses')   #validators=[validate_video],
     length=models.DecimalField(max_digits=100,decimal_places=2)
 
     def get_video_length(self):
@@ -132,5 +132,5 @@ class Sector(models.Model):
     name=models.CharField(max_length=225)
     sector_uuid=models.UUIDField(default=uuid.uuid4,unique=True)
     related_courses=models.ManyToManyField(Course,blank=True)
-    sector_image=models.ImageField(upload_to='sector_images',storage=MediaCloudinaryStorage())
+    sector_image=models.ImageField(upload_to='sector_images')  #,storage=MediaCloudinaryStorage()
 
